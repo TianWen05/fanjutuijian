@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/icon/base/iconfont.css">
+    <link rel="icon" href="../static/icon/browser/tomato.png">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <header class="glass">
+        <div>
+            <form action="{{ url_for("search") }}" method="GET" target="_blank" id="form1">
+                <a href="{{ url_for("home") }}"><h1>番剧推荐</h1></a>
+                <span class="iconfont icon-sousuo"></span>
+                <input type="text" name="wd" value="{% block searchValue %}{% endblock %}">
+                {% if user %}
+                    <div class="user">
+                        <a href="" class="username">{{ user }}</a>
+                        <a href="{{ url_for("logout") }}" class="cancellation">注销</a>
+                    </div>
+                {% else %}
+                    <div class="user">
+                        <a href="{{ url_for("login") }}" class="login_a" p>登录</a>
+                        <a href="{{ url_for("register") }}" class="register_a">注册</a>
+                    </div>
+                {% endif %}
+            </form>
+        </div>
+    </header>
+    <section>
+        {% block section %}{% endblock %}
+    </section>
+    <footer class="glass">
+    </footer>
+    {% block script %}
+    {% endblock %}
+</body>
+</html>

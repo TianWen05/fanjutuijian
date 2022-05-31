@@ -1,0 +1,29 @@
+section .card_box{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+section .card_box .card_a{
+    margin-top: 30px;
+}
+.search_message{
+    margin-top: 48px;
+    padding-top: 50px;
+    font-size: 25px;
+    height: 452.8px;
+    line-height: 100px;
+    text-align: center;
+}
+section .search_message{
+    position: relative;
+}
+section .search_message .icon-sousuo{
+    position: absolute;
+    font-size: 310px;
+    top: 220px;
+    left: 450px;
+}
+footer{
+    margin-top: 130px;
+}

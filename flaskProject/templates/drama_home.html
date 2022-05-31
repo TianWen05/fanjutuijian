@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}番剧推荐-首页{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="../static/css/home.css">
+    <link rel="stylesheet" href="../static/css/card.css">
+{% endblock %}
+
+{% block section %}
+    <div class="randon_title">
+    {% if user %}
+        <h2 class="glass">个性推荐</h2>
+        {% if gexin %}
+            <div class="card_box">
+                {% for i in range(gexin["ID"]|length) %}
+                    <a href="{{ url_for("animation_detail", animation_id=gexin["ID"][i]) }}" class="card_a">
+                        <div class="anima_card glass">
+                            <div class="left">
+                                <img src="{{ "https:" + gexin["海报链接"][i] }}" title="{{ gexin["中文名"][i] }}">
+                            </div>
+                            <div class="right">
+                                <h3>{{ gexin["中文名"][i] }}</h3>
+                                <div class="anima_type">
+                                    {% for j in range(3) %}
+                                    <span>{{ gexin["标签"][i][j] }}</span>
+                                    {% endfor %}
+                                </div>
+                                <span class="episode">{{ gexin["集数"][i] }}</span><br>
+                                <span class="introduction">简介：</span><br>
+                                <div class="info_text">
+                                    {% for a in range(gexin["简介"][i]|length) %}
+                                        <p>{{ gexin["简介"][i][a] }}</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="gexin_message glass">您的用户信息不足，暂时无法对您进行个性推荐</div>
+        {% endif %}
+    {% endif %}
+        <h2 class="glass">随机推荐</h2>
+            <div class="card_box">
+                {% for i in range(random["ID"]|length) %}
+                    <a href="{{ url_for("animation_detail", animation_id=random["ID"][i]) }}" class="card_a">
+                        <div class="anima_card glass">
+                            <div class="left">
+                                <img src="{{ "https:" + random["海报链接"][i] }}" title="{{ random["中文名"][i] }}">
+                            </div>
+                            <div class="right">
+                                <h3>{{ random["中文名"][i] }}</h3>
+                                <div class="anima_type">
+                                    {% for j in range(3) %}
+                                    <span>{{ random["标签"][i][j] }}</span>
+                                    {% endfor %}
+                                </div>
+                                <span class="episode">{{ random["集数"][i] }}</span><br>
+                                <span class="introduction">简介：</span><br>
+                                <div class="info_text">
+                                    {% for a in range(random["简介"][i]|length) %}
+                                        <p>{{ random["简介"][i][a] }}</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        <h2 class="glass">新番推荐</h2>
+            <div class="card_box">
+                    {% for i in range(xinfan["ID"]|length) %}
+                        <a href="{{ url_for("animation_detail", animation_id=xinfan["ID"][i]) }}" class="card_a">
+                            <div class="anima_card glass">
+                                <div class="left">
+                                    <img src="{{ "https:" + xinfan["海报链接"][i] }}" title="{{ xinfan["中文名"][i] }}">
+                                </div>
+                                <div class="right">
+                                    <h3>{{ xinfan["中文名"][i] }}</h3>
+                                    <div class="anima_type">
+                                        {% for j in range(3) %}
+                                        <span>{{ xinfan["标签"][i][j] }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    <span class="episode">{{ xinfan["集数"][i] }}</span><br>
+                                    <span class="introduction">简介：</span><br>
+                                    <div class="info_text">
+                                        {% for a in range(xinfan["简介"][i]|length) %}
+                                            <p>{{ xinfan["简介"][i][a] }}</p>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+    </div>
+    
+{% endblock %}

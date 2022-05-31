@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block title %}{{ animation_info["中文名"][0] }} | 番剧推荐{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="../static/css/detail.css">
+{% endblock %}
+
+{% block section %}
+    <div class="detail glass">
+        <h2 class="title">{{ animation_info["中文名"][0] }}</h2>
+        <div>
+            <div class="left">
+                <img src="{{ animation_info["海报链接"][0] }}" alt="">
+                中文名：<span class="chinese_name">{{ animation_info["中文名"][0] }}</span><br>
+                外国名：<span class="foreign_name">{{ animation_info["外国名"][0] }}</span><br>
+                集数：<span class="episode">{{ animation_info["集数"][0] }}</span><br>
+                员工：
+                {% for i in range(animation_info["员工"][0]|length) %}
+                    {% if i==(animation_info["员工"][0]|length - 1) %}
+                        <span class="worker">{{ animation_info["员工"][0][i] }}</span>
+                    {% else %}
+                        <span class="worker">{{ animation_info["员工"][0][i] }}</span>;
+                    {% endif %}
+                {% endfor %}
+                <br>
+                放送时间：<span class="date">{{ animation_info["出版日期"][0] }}</span>
+            </div>
+            <div class="middle">
+            简介：
+                <br>
+                <div class="introduction_box">
+                    {% for i in range(animation_info["简介"][0]|length) %}
+                        <p class="introduction">{{ animation_info["简介"][0][i] }}</p>
+                    {% endfor %}
+                </div>
+            标签：
+                <div class="label_box">
+                    
+                    {% for i in range(animation_info["标签"][0]|length) %}
+                        <span class="label">{{ animation_info["标签"][0][i] }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="right">
+                <div class="score">{{ animation_info["bangumi评分"][0] }}</div>
+                <div class="number_of_rater">{{ animation_info["bangumi评分人数"][0] }}</div>
+                {% if user %}
+                    {% if score == 0 %}
+                        <form action="">
+                            <div class="text">来评分吧：</div>
+                            <div class="star_box">
+                                <div class="iconfont icon-pingfen" score=1></div>
+                                <div class="iconfont icon-pingfen" score=2></div>
+                                <div class="iconfont icon-pingfen" score=3></div>
+                                <div class="iconfont icon-pingfen" score=4></div>
+                                <div class="iconfont icon-pingfen" score=5></div>
+                            </div>
+                            <button class="submit" onclick="getScore()">提交</button>
+                        </form>
+                    {% else %}
+                        <form action="">
+                            <div class="text">您已评分！</div>
+                            <div class="star_box">
+                                {% for i in range(score) %}
+                                    <div class="iconfont icon-pingfen" style="color: yellow"></div>
+                                {% endfor %}
+                                {% for i in range(5-score) %}
+                                    <div class="iconfont icon-pingfen"></div>
+                                {% endfor %}
+                            </div>
+                        </form>
+                    {% endif %}
+                {% else %}
+                    <form action="{{ url_for("login") }}">
+                        <div class="text">
+                            您还没登录呢，还不能进行评分，快去登录吧！
+                        </div>
+                        <button class="toLogin">去登录</button>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    {% if score == 0 %}
+        <script src="../static/js/jquery-3.6.0.js"></script>
+        <script>
+            var star = document.getElementsByClassName("icon-pingfen")
+            var but_login = document.getElementById("toLogin")
+            var but_sub = document.getElementsByClassName("submit")
+            var score = 0
+            {% for i in range(5) %}
+                star[{{ i }}].onclick = function (){
+                    score = star[{{ i }}].getAttribute("score")
+                    for(var j=0;j<score;j++){
+                        star[j].style.color = "yellow"
+                    }
+                    for(j=score;j<5;j++){
+                        star[j].style.color = "white"
+                    }
+                }
+            {% endfor %}
+            {% if user %}
+                function getScore(){
+                    $.ajax({
+                        type: 'GET',
+                        url: '/animation',
+                        dataType: 'json',
+                        data: {'score':score,
+                               'aID': "{{ animation_info["ID"][0] }}" },
+                        success: function(res){
+                            console.log(res)
+                        },
+                        error: function(){
+                            console.log('error')
+                        }
+                    })
+                }
+            {% else %}
+                but_login[0].onclick = function (){
+                    window.location.href("{{ url_for("login") }}")
+                }
+            {% endif %}
+        </script>
+    {% endif %}
+{% endblock %}

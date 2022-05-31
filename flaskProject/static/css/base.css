@@ -1,0 +1,120 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: white;
+}
+input{
+    outline: none;
+    border: none;
+}
+section{
+    width: 1200px;
+    margin: 0 auto;
+    min-height: calc(100% - 284px);
+}
+/* 未访问的链接 */
+a:link {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  /* 已访问的链接 */
+a:visited {
+    color: #ffffff;
+    text-decoration: none;
+}
+  
+  /* 鼠标悬停链接 */
+a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+  
+  /* 已选择的链接 */
+a:active {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+}
+body{
+    background-size: 100%;
+    background: url(../images/background_login.jpeg) no-repeat fixed;
+}
+header{
+    height: 100px;
+    background: rgba(00, 00, 00, 0.6);
+    box-shadow: 1px 1px 3px;
+}
+.glass{
+    border: 1px solid gray;
+    background: linear-gradient(to right bottom, #00000060, #00000010);
+    backdrop-filter: blur(8px);
+    box-shadow: 10px 10px 10px #00000080;
+}
+header div{
+    width: 1488px;
+    margin: 0 auto;
+}
+header div form{
+    margin: 0 auto;
+    width: 1000px;
+    height: 100%;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+header div form input{
+    width: 300px;
+    height: 25px;
+    background: #ffffff00;
+    border-bottom: 2px solid white;
+    color: #ffffff;
+}
+header div form .icon-sousuo{
+    position: absolute;
+    left: 325px;
+    font-size: 30px;
+}
+header div form h1{
+    font-size: 40px;
+    line-height: 100px;
+}
+header div form .user .login_a{
+    padding-right: 10px;
+    border-right: 1px solid white;
+    overflow: hidden;
+}
+header div form .user .register_a{
+    padding-left: 10px;
+}
+header div form #searchId{
+    display: none;
+}
+header div form .user{
+    width: 150px;
+    margin: 0;
+    display: flex;
+    justify-content: end;
+}
+header div form .user .username{
+    padding-right: 10px;
+    border-right: 1px solid white;
+}
+header div form .user .cancellation{
+    padding-left: 10px;
+}
+
+footer{
+    height: 50px;
+    width: 100%;
+    background: #00000080;
+    box-shadow: -1px -1px 5px #000000;
+    margin-top: 30px;
+}

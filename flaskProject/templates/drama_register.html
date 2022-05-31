@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}番剧推荐-注册{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="../static/css/register.css">
+    <link rel="stylesheet" href="../static/icon/login/iconfont.css">
+{% endblock %}
+
+{% block section %}
+        <div class="register glass">
+        <form action="" method="post">
+            <p class="title">Sign up</p>
+            <span class="iconfont icon-user"></span>
+            <input type="text" placeholder="username" class="input_kuang" name="username">
+            <span class="iconfont icon-password password"></span>
+            <input type="password" placeholder="password" class="input_kuang" name="password">
+            <span class="iconfont icon-password repeat-password"></span>
+            <input type="password" placeholder="repeat your password" name="repeat_password" class="input_kuang">
+            {% for message in get_flashed_messages() %}
+                <div class="message">{{ message }}</div>
+            {% endfor %}
+            <input type="submit" value="Sign up" class="botton_register">
+        </form>
+    </div>
+{% endblock %}

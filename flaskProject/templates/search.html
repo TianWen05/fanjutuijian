@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}搜索{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="../static/css/card.css">
+    <link rel="stylesheet" href="../static/css/search.css">
+    <link rel="stylesheet" href="../static/icon/base/demo.css">
+{% endblock %}
+
+{% block searchValue %}
+{{ keyword }}
+{% endblock %}
+
+{% block section %}
+    {% if animation %}
+        <div class="card_box">
+            {% for i in range(animation["ID"]|length) %}
+                <a href="{{ url_for("animation_detail", animation_id=animation["ID"][i]) }}" class="card_a">
+                    <div class="anima_card glass">
+                        <div class="left">
+                            <img src="{{ "https:" + animation["海报链接"][i] }}" title="{{ animation["中文名"][i] }}">
+                        </div>
+                        <div class="right">
+                            <h3>{{ animation["中文名"][i] }}</h3>
+                            <div class="anima_type">
+                                {% for j in range(3) %}
+                                <span>{{ animation["标签"][i][j] }}</span>
+                                {% endfor %}
+                            </div>
+                            <span class="episode">{{ animation["集数"][i] }}</span><br>
+                            <span class="introduction">简介：</span><br>
+                            <div class="info_text">
+                                {% for a in range(animation["简介"][i]|length) %}
+                                    <p>{{ animation["简介"][i][a] }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="search_message glass">
+            抱歉，没有搜索到相关信息
+            <span class="iconfont icon-sousuo"></span>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,92 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.card_a:link{
+    color: white;
+    text-decoration: none;
+}
+/* 链接初始颜色 */
+.card_a:visited{
+    color: white;
+    text-decoration: none;
+}
+/* 链接访问后的颜色 */
+.card_a:hover{
+    color: white;
+    text-decoration: none;
+}
+/* 鼠标移上去的颜色 */
+.card_a:active{
+    color: white;
+    text-decoration: none;
+}
+
+.card_a{
+    width: 350px;
+    height: 212px;
+    display: block;
+}
+.anima_card:hover{
+    transform: scale(1.2);
+    box-sizing: border-box;
+}
+.anima_card {
+    width: 350px;
+    height: 212px;
+    background: #00000080;
+    border: 1px solid gray;
+    display: flex;
+    overflow: hidden;
+    transition: transform 0.5s;
+}
+.anima_card .left{
+    width: 155px;
+    height: 100%;
+}
+.anima_card .left img{
+    height: 100%;
+}
+.anima_card .right{
+    width: calc(100% - 155px);
+    flex-direction: column;
+    overflow: hidden;
+    padding: 10px;
+}
+.anima_card .right h3{
+    text-align: center;
+}
+.anima_card .right .anima_type {
+    margin: 0, auto;
+    margin-top: 5px;
+    display: flex;
+    overflow: hidden;
+}
+.anima_card .right .anima_type span{
+    border: 1px rgb(40, 188, 237, 0.8) solid;
+    background: rgb(40, 188, 237, 0.8);
+    border-radius: 17px;
+    font-size: 12px;
+    height: 20px;
+    min-width: 30px;
+    line-height: 20px;
+    text-align: center;
+}
+.anima_card .right .introduction {
+    font-size: 10px;
+    padding-top: 2px;
+}
+.anima_card:hover .right .info_text p{
+    transform: translateY(-500px);
+    transition: transform 15s linear;
+}
+.anima_card .right .info_text{
+    overflow: hidden;
+    padding-left: 5px;
+}
+
+.anima_card .right .info_text p{
+    font-size: 10px;
+    text-indent: 2em;
+}

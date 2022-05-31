@@ -1,0 +1,110 @@
+section .detail{
+    margin: 0 auto;
+    margin-top: 20px;
+    min-height: 531px;
+    width: 1000px;
+}
+
+.detail>div{
+    display: flex;
+    justify-content: space-between;
+}
+
+section .title{
+    height: 50px;
+    line-height: 50px;
+    text-indent: 1em;
+    border-bottom: 2px solid wheat;
+}
+
+.detail div .left{
+    font-size: 13px;
+    width: 200px;
+    margin: 20px;
+}
+
+.detail div .left img{
+    margin: 0 auto;
+    display: block;
+    padding: 5px;
+    margin-bottom: 20px;
+    border: 2px solid gray;
+}
+
+.detail div .right{
+    width: 150px;
+    margin: 10px;
+}
+
+.detail div .right .score{
+    margin-top: 30px;
+    color: yellow;
+    font-size: 32px;
+}
+.detail div .right .number_of_rater{
+    font-size: 12px;
+}
+.detail div .middle{
+    width: 500px;
+    margin: 10px;
+}
+.detail div .middle .introduction_box{
+    padding-left: 1em;
+    padding-bottom: 10px;
+}
+.detail div .middle .label_box{
+    margin-top: 20px;
+}
+.detail div .middle .label_box{
+    margin: 0, auto;
+    margin-top: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+.detail div .middle .label_box .label{
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    border: 1px rgb(40, 188, 237, 0.8) solid;
+    background: rgb(40, 188, 237, 0.8);
+    border-radius: 17px;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+}
+
+.star_box{
+    display: flex;
+}
+
+.text{
+    margin-top: 50px;
+    font-size: 13px;
+    text-indent: 2em;
+}
+.right form .star_box{
+    margin-top: 10px;
+    align-self: center;
+}
+.icon-pingfen{
+    font-size: 15px;
+    margin-left: 5px;
+}
+.detail div .right form{
+    display: flex;
+    flex-direction: column;
+}
+
+.detail div .right form button{
+    margin-top: 10px;
+    background: rgba(16, 91, 116, 0.8);
+    border: none;
+    padding: 0 5px 0 5px;
+    border-radius: 12.5px;
+    width: 50px;
+    height: 25px;
+    align-self: center;
+}
