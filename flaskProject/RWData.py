@@ -8,7 +8,7 @@ def writeUser(username, password):
     :param password: 要写入数据库的密码
     :return: 无
     """
-    graph = Graph("http://localhost:7474/", auth=("neo4j", "12520123.abc"))
+    graph = Graph("http://localhost:7474/", auth=("neo4j", "12520123"))
     # 为新用户构建新ID
     # 获取总用户的数量
     n = graph.run("match(n:User) return count(n)").data()
@@ -26,7 +26,7 @@ def readAnimationInfo(animation_id):
     :param animation_id: 要查询的动画id
     :return: 返回动画节点信息
     """
-    graph = Graph("http://localhost:7474/", auth=("neo4j", "12520123.abc"))
+    graph = Graph("http://localhost:7474/", auth=("neo4j", "12520123"))
     n = graph.run("match(n:Animation) where n.ID=\"" + animation_id + "\" return n").data()
     return n
 
@@ -39,7 +39,7 @@ def writeScore(user, aID, score):
     :param score:用户评分
     :return:无
     """
-    graph = Graph("http://localhost:7474/", auth=("neo4j", "12520123.abc"))
+    graph = Graph("http://localhost:7474/", auth=("neo4j", "12520123"))
     graph.run(
         "match(u:User{username:\"" + user + "\"}),(a:Animation{ID:\"" + aID + "\"})merge(u)-[:SCORE_ON{score:" + str(
             score) + "}]->(a)")
@@ -51,7 +51,7 @@ def readSearchData(keyWord):
     :param keyWord: 关键词
     :return: 返回最多24个动画节点信息
     """
-    graph = Graph("http://localhost:7474/", auth=("neo4j", "12520123.abc"))
+    graph = Graph("http://localhost:7474/", auth=("neo4j", "12520123"))
     n = graph.run("""match (n:Animation) 
                      where n.title_chinese=~'.*""" + keyWord + """.*' or 
                      n.title_foreign=~'.*""" + keyWord + """.*' or 
@@ -71,7 +71,7 @@ def readScore(username, aid):
     """
     if username is None:
         return -1
-    graph = Graph("http://localhost:7474/", auth=("neo4j", "12520123.abc"))
+    graph = Graph("http://localhost:7474/", auth=("neo4j", "12520123"))
     r = graph.run("match p=(n:User{username:\"" + username + "\"})-[r:SCORE_ON]-(a:Animation{ID:\"" + aid + "\"})return"
                                                                                                             " r.score").data()
     if len(r) == 0:
