@@ -7,7 +7,7 @@ import verify
 import RWData
 
 # 连接到neo4j数据库
-graph = Graph("http://localhost:7474/", auth=("neo4j", "12520123.abc"))
+graph = Graph("http://localhost:7474/", auth=("neo4j", "12520123"))
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = '12520123.abc'
