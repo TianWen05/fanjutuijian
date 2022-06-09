@@ -10,7 +10,7 @@ def recommendRandom(num):
     :return: 函num个动画信息的节点列表
     """
     # 连接到数据库
-    graph = Graph("http://localhost:7474/", auth=("neo4j", "12520123.abc"))
+    graph = Graph("http://localhost:7474/", auth=("neo4j", "12520123"))
     ID_list = []
     # 随机生成6个id
     e = 0
@@ -40,7 +40,7 @@ def recommendXinfan(num):
     :return: 一个新番节点列表
     """
     # 请求数据库
-    graph = Graph("http://localhost:7474/", auth=("neo4j", "12520123.abc"))
+    graph = Graph("http://localhost:7474/", auth=("neo4j", "12520123"))
     a = graph.run("""match(n:Animation)
                    with n
                    order by n.date desc
@@ -55,7 +55,7 @@ def recommendPersonality(username, num):
     :param username: 需要推荐的用户名
     :return: 返回num个番剧节点信息
     """
-    graph = Graph("http://localhost:7474/", auth=("neo4j", "12520123.abc"))
+    graph = Graph("http://localhost:7474/", auth=("neo4j", "12520123"))
     # 为用户建立相似度关系
     username = "username:\"" + username + "\""
 
